@@ -1,0 +1,8 @@
+description: Salt for verification
+id: verified_salt
+kind: ingredient
+name: Verified Salt
+stats:
+  elasticity: 0
+  flavor_intensity:
+    salty: 100

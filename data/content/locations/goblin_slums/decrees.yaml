@@ -1,0 +1,43 @@
+domain: goblin_slums
+
+content:
+  # ------------------------------------------------------------------
+  # 3. THE DIVINE CONFLICT (Decrees)
+  # ------------------------------------------------------------------
+  # GOD A: THE ROT-MOTHER (Loves Decay)
+  # Demands inoculation (mold) for all soft foods.
+  - kind: decree
+    id: "decree_rot_01"
+    target_tag: "sacred_rot"
+    operation: "inoculate"
+    requirements:
+      - type: "texture_is"
+        value: "soft"
+        token_key: "texture_state"
+      - type: "temperature_below"
+        value: 20 # Celsius (Mold likes cool)
+        token_key: "max_temp"
+
+    # TRIVIA GENERATION
+    text_template: >
+      "The Rot-Mother blesses only those {texture_state} offerings which have 
+      been inoculated below {max_temp} degrees, ensuring the bloom is vibrant."
+
+    success_effect: "add_tag:blessed_by_rot"
+    failure_effect: "add_tag:cursed_by_rot"
+
+  # GOD B: THE STERILE ONE (Hates Decay)
+  # Forbids the 'inoculate' step entirely if the food is meant to be 'Pure'.
+  - kind: decree
+    id: "decree_sterile_01"
+    target_tag: "sacred_purity"
+    operation: "sterilize" # Conflicting operation
+    requirements:
+      - type: "has_no_tag"
+        value: "myco_bloom" # Hates the cake from Step 3
+        token_key: "forbidden_contaminant"
+
+    # TRIVIA GENERATION
+    text_template: >
+      "Purity is achieved only by the total absence of {forbidden_contaminant}. 
+      Any trace of fungal life is an abomination."

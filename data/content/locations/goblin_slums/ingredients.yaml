@@ -1,0 +1,65 @@
+domain: goblin_slums
+
+# ------------------------------------------------------------------
+# 2. THE INGREDIENTS (The Raw Materials)
+# ------------------------------------------------------------------
+content:
+  # A. THE TOXIN (Selective Toxicity)
+  # Safe for Goblins (who have 'iron_gut'), deadly for Elves.
+  - kind: ingredient
+    id: "sewer_eel_liver"
+    name: "Hepatic Lobe of Blind Eel"
+    description: "A filter organ rich in heavy metals and despair."
+    state_tags: ["raw", "organ", "toxic_to_elves", "sanguine"]
+    stats:
+      ph_level: 4.5
+      water_activity: 0.9
+      flavor_intensity:
+        bitter: 80
+        sanguine: 40
+        petrichor: 20
+    transforms:
+      nixtamalize: "eel_liver_cured" # Neutralizes toxin
+      fry: "eel_liver_crisp" # Still toxic!
+
+  # B. THE BASE (The Long Chain Step 1)
+  # Disgusting raw sludge.
+  - kind: ingredient
+    id: "bio_slurry_raw"
+    name: "Raw Bio-Aggregate"
+    description: "Unfiltered run-off from the Alchemy District."
+    state_tags: ["liquid", "waste", "unstable"]
+    stats:
+      viscosity: 80
+      flavor_intensity:
+        hollow: 50
+        sour: 30
+    transforms:
+      emulsify: "bio_slurry_stabilized" # Step 2
+
+  # C. THE INTERMEDIATE (The Long Chain Step 2)
+  # Stabilized, but bland. Needs mold.
+  - kind: ingredient
+    id: "bio_slurry_stabilized"
+    name: "Stabilized Protein Matrix"
+    state_tags: ["gel", "neutral"]
+    stats:
+      plasticity: 60
+    transforms:
+      inoculate: "myco_bloom_cake" # Step 3 (The Rot-Mother's favorite)
+
+  # D. THE DELICACY (The Long Chain Step 3 - Final)
+  # The glow-up. Literally.
+  - kind: ingredient
+    id: "myco_bloom_cake"
+    name: "Photoluminescent Myco-Cake"
+    description: "A spongy, glowing cake created by fungal colonization of sludge."
+    state_tags: ["solid", "aerated", "biomorphic", "sacred_rot"]
+    stats:
+      friability: 40
+      flavor_intensity:
+        umami: 70
+        chroma: 90 # Tastes like 'Green Light'
+    transforms:
+      photo_activate: "luminous_caviar" # The Ultra-Rare finish
+
