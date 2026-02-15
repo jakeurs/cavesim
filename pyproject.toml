@@ -4,9 +4,6 @@ version = "0.1.0"
 description = "A cave simulation game with a focus on bureaucracy."
 dependencies = [
     "textual",
-    "sqlmodel",
-    "aiosqlite",
-    "pyyaml",
     "pydantic",
 ]
 
